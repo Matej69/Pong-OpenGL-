@@ -1,0 +1,16 @@
+﻿1>------ Rebuild All started: Project: Pong(OpenGL), Configuration: Debug Win32 ------
+1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+1>  Subscriber.cpp
+1>  Sprite.cpp
+1>e:\pong(opengl)\sdl2\include\sdl_surface.h(70): warning C4099: 'SDL_Surface': type name first seen using 'class' now seen using 'struct'
+1>  e:\pong(opengl)\sdl2\include\sdl_surface.h(69): note: see declaration of 'SDL_Surface'
+1>e:\pong(opengl)\sdl2\include\sdl_video.h(89): warning C4099: 'SDL_Window': type name first seen using 'class' now seen using 'struct'
+1>  e:\pong(opengl)\pong(opengl)\game.h(2): note: see declaration of 'SDL_Window'
+1>e:\pong(opengl)\sdl2\include\sdl_render.h(121): warning C4099: 'SDL_Renderer': type name first seen using 'class' now seen using 'struct'
+1>  e:\pong(opengl)\pong(opengl)\game.h(4): note: see declaration of 'SDL_Renderer'
+1>e:\pong(opengl)\sdl2\include\sdl_render.h(122): warning C4099: 'SDL_Renderer': type name first seen using 'class' now seen using 'struct'
+1>  e:\pong(opengl)\sdl2\include\sdl_render.h(121): note: see declaration of 'SDL_Renderer'
+1>e:\pong(opengl)\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
+1>  e:\pong(opengl)\pong(opengl)\sprite.h(8): note: see declaration of 'SDL_Texture'
+1>e:\pong(opengl)\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
+1>  e:\pong(opengl)\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
