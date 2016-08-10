@@ -1,12 +1,17 @@
 
-class SDL_Window;
-class SDL_Surface;
-class SDL_Renderer;
+
+#ifndef GAME_H
+#define GAME_H
+
+#include <SDL.h>
+
+#include "GlobalStuff.h"
+using namespace n_geometry;
 
 namespace n_window {
-	extern	int				w, h;
-	extern	SDL_Window		*window;
-	extern	SDL_Renderer	*renderer;
+	extern	Size			windowSize	;
+	extern	SDL_Window		*window		;
+	extern	SDL_Renderer	*renderer	;
 }
 
 class Game
@@ -18,4 +23,4 @@ public:
 	Game();
 	~Game();
 };
-
+#endif

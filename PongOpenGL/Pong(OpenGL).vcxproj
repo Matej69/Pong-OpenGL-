@@ -72,8 +72,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\Output</OutDir>
-    <IncludePath>E:\Pong%28OpenGL%29\SDL2\include;E:\Pong%28OpenGL%29\SDL2image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Pong%28OpenGL%29\SDL2\lib\x86;E:\Pong%28OpenGL%29\SDL2image\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\PongOpenGL\SDL2\include;E:\PongOpenGL\SDL2image\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\PongOpenGL\SDL2\lib\x86;E:\PongOpenGL\SDL2image\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -81,8 +81,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>.\Output</OutDir>
-    <IncludePath>E:\Pong%28OpenGL%29\SDL2\include;E:\Pong%28OpenGL%29\SDL2image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Pong%28OpenGL%29\SDL2\lib\x86;E:\Pong%28OpenGL%29\SDL2image\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\PongOpenGL\SDL2\include;E:\PongOpenGL\SDL2image\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\PongOpenGL\SDL2\lib\x86;E:\PongOpenGL\SDL2image\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -95,7 +95,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>E:\Pong%28OpenGL%29\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\PongOpenGL\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,7 +128,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>E:\Pong%28OpenGL%29\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\PongOpenGL\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -158,7 +158,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Controler.cpp" />
     <ClCompile Include="Event.cpp" />
+    <ClCompile Include="Force.cpp" />
     <ClCompile Include="FPSTimer.cpp" />
     <ClCompile Include="FunctionCallTracker.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -167,11 +171,17 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="ISubscriber.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Paddle.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Subscriber.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="Controler.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="Force.h" />
     <ClInclude Include="FPSTimer.h" />
     <ClInclude Include="FunctionCallTracker.h" />
     <ClInclude Include="Game.h" />
@@ -179,8 +189,14 @@
     <ClInclude Include="GlobalStuff.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="ISubscriber.h" />
+    <ClInclude Include="Paddle.h" />
+    <ClInclude Include="Physics.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Subscriber.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Pong(OpenGL).rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

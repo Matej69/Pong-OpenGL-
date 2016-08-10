@@ -9,9 +9,9 @@ using namespace std;
 
 class Input
 {
-private:
-	map<SDL_Scancode, bool> heldKeys;
-	map<SDL_Scancode, bool> releaseKeys;	
+public:
+	static map<SDL_Scancode, bool> s_heldKeys;
+	static map<SDL_Scancode, bool> s_releaseKeys;
 public:
 	void OnInputEvent();
 	void OnKeyDown(SDL_Scancode key);

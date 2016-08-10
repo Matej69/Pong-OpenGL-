@@ -21,6 +21,7 @@ private:
 	string		src;
 public:
 	void Draw(int x, int y, int w, int h);
+	void InitSpriteTex(string imgName);
 	Sprite(string imgName);
 	Sprite();
 	~Sprite();

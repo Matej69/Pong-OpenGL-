@@ -16,14 +16,16 @@ using namespace std;
 
 #include "GlobalStuff.h"
 #include "FunctionCallTracker.h"
+#include "ISubscriber.h"
+#include "Subscriber.h"
 
-class ISubscriber;
 
 namespace n_event {
 	enum EType {
 		KEY_DOWN,
 		KEY_UP,
-		MOUSE_CLICK
+		MOUSE_CLICK,
+		GAMEOBJECT_LIST_UPDATED
 	};
 }
 using namespace n_event;
@@ -39,18 +41,18 @@ public:
 public:
 	template<class Object, class Return, class ...Params>
 		void Register(Object &object, Return(Object::*objectFun)(Params...)) {
-			FunctionCallTracker debugFun(string("Registering object to event" + to_string(type)), "Registration was suscessfull");
-			ISubscriber *pointerToSub = new Subscriber<Object, Return, Params...>(object, objectFun);
-			pointerToSub->subscriberObjType = n_globalStuff::GetClassName(object);
-			subscribers.push_back(pointerToSub);
+			FunctionCallTracker debugFun(string("Registering object to event" + to_string(type)), "Registration was suscessfull");			
+			ISubscriber *pointerToSub = new Subscriber<Object, Return, Params...>(object, objectFun);	
+			pointerToSub->subscriberObjType = n_globalStuff::GetClassName(object);	
+			subscribers.push_back(pointerToSub);			
 		}
 	template<class ...Params>
 		void CallEvent(Params ...params) {
 			FunctionCallTracker debugFun(string("Event is being called TYPE=" + to_string(type)), "Call was suscessfull");
 			int counter = 0;
 			for (ISubscriber *sub : subscribers) {
-				cout << "("<< counter++ <<") ..." ;
-				if (sub->subscriberObjType == "GameObject") { static_cast<Subscriber<GameObject, void, Params...>*>(sub)->CallFunction(params...); }				
+				if (sub->subscriberObjType == "GameObject") { static_cast<Subscriber<GameObject, void, Params...>*>(sub)->CallFunction(params...)	; }
+				if (sub->subscriberObjType == "Collider")	{ static_cast<Subscriber<Collider, void, Params...>*>(sub)->CallFunction(params...)		; }
 			}
 		}
 	template<class Object,class Return, class ...Params >
@@ -67,6 +69,25 @@ public:
 			}
 		}
 public:
+	template<class Object>
+	static void RemoveSubscriberFromAll(Object *subToRemove) {
+		FunctionCallTracker debugFun("Trying to remove object from all events", "Trying to remove was suscessfull");
+		for (auto it = s_events.begin(); it != s_events.end(); ++it)
+		{
+			int index = 0;
+			for (ISubscriber *sub : it->second->subscribers) {
+				if (static_cast<Subscriber<Object, void, int>*>(sub)->gameObject == subToRemove) {	// other 2 <T> parameters can be whatever
+					FunctionCallTracker debugFun(string("Removing object from from event TYPE=" + to_string(it->second->type)), string("Object removed from event TYPE=" + to_string(it->second->type)));
+					it->second->subscribers.erase(it->second->subscribers.begin() + index);
+					break;
+				}
+				++index;
+			}
+		}
+	}
+	/* ****** class Return, class ...Params are not necesary, we only need to pass class Object 
+	-> object is Object* that needs type to know what it is, other 2 are for functions and are not necesary
+
 		template<class Object, class Return, class ...Params >
 			static void RemoveSubscriberFromAll(Object *subToRemove) {			
 				FunctionCallTracker debugFun("Trying to remove object from all events", "Trying to remove was suscessfull");
@@ -74,7 +95,7 @@ public:
 				{			
 					int index = 0;
 					for (ISubscriber *sub : it->second->subscribers) {
-						if (static_cast<Subscriber<Object, Return, Params...>*>(sub)->gameObject == subToRemove) {
+						if (static_cast<Subscriber<Object, void, int>*>(sub)->gameObject == subToRemove) {
 							FunctionCallTracker debugFun(string("Removing object from from event TYPE=" + to_string(it->second->type)), string("Object removed from event TYPE=" + to_string(it->second->type)));
 							it->second->subscribers.erase(it->second->subscribers.begin() + index);
 							break;
@@ -83,7 +104,7 @@ public:
 					}					
 				}			
 			}
-	
+	*/
 
 public:
 	int GetNumOfSubs();

@@ -5,6 +5,9 @@
 #include <string>
 using namespace std;
 
+map<SDL_Scancode, bool> Input::s_heldKeys;
+map<SDL_Scancode, bool> Input::s_releaseKeys;
+
 void Input::OnInputEvent() {
 	SDL_Event e;
 	while (SDL_PollEvent(&e))
@@ -56,33 +59,32 @@ void Input::OnInputEvent() {
 		if (e.type == SDL_WINDOWEVENT)
 		{
 			if (e.window.event == SDL_WINDOWEVENT_RESIZED)
-			{
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EXTERNAL PROBLEM, _> when external is used in Sprite.cpp it's fine %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				//SDL_GetWindowSize(n_window::window, &n_window::w, &n_window::h);				
+			{				
+				int w = n_window::windowSize.w;			int h = n_window::windowSize.w;
+				SDL_GetWindowSize(n_window::window, &w, &h);
+				n_window::windowSize.w = w;				n_window::windowSize.h = h;				
 			}
 		}
 	}
 }
 void Input::OnKeyDown(SDL_Scancode key) {
-	heldKeys[key] = true;
-	releaseKeys[key] = false;
+	s_heldKeys[key] = true;
+	s_releaseKeys[key] = false;
 }
 void Input::OnKeyUp(SDL_Scancode key) {
-	heldKeys[key] = false;
-	releaseKeys[key] = true;
+	s_heldKeys[key] = false;
+	s_releaseKeys[key] = true;
 }
 bool Input::IsKeyUp(SDL_Scancode key) {
-	return releaseKeys[key];
+	return s_releaseKeys[key];
 }
 bool Input::IsKeyDown(SDL_Scancode key) {
-	return heldKeys[key];
+	return s_heldKeys[key];
 }
 
 Input::Input()
 {	
 }
-
-
 Input::~Input()
 {
 }
