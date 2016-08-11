@@ -2,19 +2,22 @@
 #ifndef COLLIDER_H
 #define COLLIDER_H
 
-#include <vector>;
+#include <vector>
 using namespace std;
 
+#include "Timer.h"
 class GameObject;
+
 
 class Collider
 {
 public:
-	GameObject *ownerObject;
-	vector<GameObject*> collidableObjects;
+	GameObject			*ownerObject;
+	vector<GameObject*>	collidableObjects;
+	Timer				colliderTimer;
 public:
 	void CollisonListUpdate();
-	void CollisionEffect();
+	void CollisionEffect(float deltaTime);
 	Collider();
 	Collider(GameObject &object);
 	~Collider();

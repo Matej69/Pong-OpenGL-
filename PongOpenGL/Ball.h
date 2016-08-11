@@ -11,7 +11,7 @@ public:
 public:
 	void UpdateLogic(float deltaTime) override;
 	void InitSettings() override;
-	void BorderBounce();
+	bool BorderBounce();
 public:
 	Ball();
 	Ball(int _x, int _y, int _w, int _h);

@@ -6,8 +6,7 @@ void Collider::CollisonListUpdate()
 {	
 	collidableObjects.clear();
 	for (auto it = GameObject::s_gameObjects.begin(); it != GameObject::s_gameObjects.end(); ++it)
-	{
-		cout << "owner TYPE : " << ownerObject->type << " it Type : "<< (*it)->type << " >>>  ";
+	{		
 		if (ownerObject->type == GObjType::BALL)		
 			{
 				if ((*it)->type == GObjType::PADDLE || (*it)->type == GObjType::UPGRADE)
@@ -28,38 +27,45 @@ void Collider::CollisonListUpdate()
 		cout << endl;
 	}	
 }
-void Collider::CollisionEffect() 
+void Collider::CollisionEffect(float deltaTime)
 {
-	 //cout << "++++++ " << collidableObjects.size() << " +++++++"<< endl;
-	for (auto it = collidableObjects.begin(); it != collidableObjects.end(); ++it)
-	{	
-		if (ownerObject->type == GObjType::BALL)
+	colliderTimer.Tick(deltaTime);
+	if (this->colliderTimer.timePassed > deltaTime * 2)
+	{
+		for (auto it = collidableObjects.begin(); it != collidableObjects.end(); ++it)
 		{
-			if ((*it)->type == GObjType::PADDLE)
+			//if this object is ball::::::::::::::::::::::::::::::
+			if (ownerObject->type == GObjType::BALL)
 			{
-				if (n_geometry::IsCircleAndRectColliding(*ownerObject, *(*it)))
+				if ((*it)->type == GObjType::PADDLE)
 				{
-					cout << "BALL AND BALL are colliding" << endl;
+					if (n_geometry::IsCircleAndRectColliding(*ownerObject, *(*it)))
+					{
+						colliderTimer.Reset();
+						for (Force &force : ownerObject->physics.forces)
+							force.dirY *= -1;
+					}
+				}
+			}
+			//if this object is paddle or upgrade::::::::::::::::::::::::::::::
+			else if (ownerObject->type == GObjType::PADDLE || ownerObject->type == GObjType::UPGRADE)
+			{
+				if ((*it)->type == GObjType::BALL)
+				{
+					if (n_geometry::IsCircleAndRectColliding(*ownerObject, *(*it)))
+					{
+
+					}
 				}
 			}
 		}
-		else if (ownerObject->type == GObjType::PADDLE || ownerObject->type == GObjType::UPGRADE)
-		{
-			if ((*it)->type == GObjType::BALL)
-			{
-				if (n_geometry::IsCircleAndRectColliding(*ownerObject, *(*it)))
-				{
-					cout << "PADDLE AND BALL are colliding" << endl;
-				}
-			}
-		}
-		
 	}
 }
 
 Collider::Collider(GameObject &object)
 {
 	ownerObject = &object;
+	this->colliderTimer.startTime = 0.5f;
 }
 Collider::Collider()
 {

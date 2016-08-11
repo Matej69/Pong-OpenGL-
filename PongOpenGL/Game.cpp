@@ -44,6 +44,7 @@ void Game::PaintBackground(int r, int g, int b, int a) {
 #include "Paddle.h"
 #include "Ball.h"
 #include "Physics.h"
+#include "Timer.h"
 
 
 void Game::GameLoop() {
@@ -57,11 +58,14 @@ void Game::GameLoop() {
 	Event keydown(n_event::KEY_DOWN);
 	Event GOlistUpdated(n_event::GAMEOBJECT_LIST_UPDATED);
 
-	Paddle o1(10, 10, 150, 30);	
-	Ball o2(10, 160, 81, 81);
+	Paddle paddle1(10, 10, 150, 30);	
+	Paddle paddle2(10, 550, 150, 30);
+	Ball ball(10, 160, 30, 30);
 
-	o1.controler.SetControls(SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT);
+	paddle1.controler.SetControls(SDL_SCANCODE_A, SDL_SCANCODE_D);
+	paddle2.controler.SetControls(SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT);
 		
+
 	while (isRunning) 
 	{
 		fpsTimer.UpdateDeltaTime();
@@ -71,12 +75,15 @@ void Game::GameLoop() {
 		
 		input.OnInputEvent();
 
-		o1.DrawSprite();
-		o2.DrawSprite();
+		paddle1.DrawSprite();
+		paddle2.DrawSprite();
+		ball.DrawSprite();
 				
-		o1.UpdateLogic(fpsTimer.deltaTime);
-		o2.UpdateLogic(fpsTimer.deltaTime);
-					
+		paddle2.UpdateLogic(fpsTimer.deltaTime);
+		paddle1.UpdateLogic(fpsTimer.deltaTime);		
+		ball.UpdateLogic(fpsTimer.deltaTime);
+	
+		
 
 		SDL_RenderPresent(renderer);		
 		//SDL_UpdateWindowSurface(window);	

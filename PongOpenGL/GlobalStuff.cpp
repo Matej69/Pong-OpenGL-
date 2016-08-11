@@ -1,5 +1,6 @@
 #include "GlobalStuff.h"
 #include "GameObject.h"
+#include "Sprite.h"
 
 namespace n_geometry {
 	void Cord::SetCord(float a, float b) { x = a; y = b; }
@@ -28,10 +29,10 @@ namespace n_geometry {
 	}
 	//Change later to actuall  circle-rect collision if you want, for now since circles are gonna be small, this will work as well
 	bool IsCircleAndRectColliding(const GameObject &thisObj, const GameObject &otherObj) {
-		Cord topLeft(thisObj.cord.x - otherObj.size.w / 2, thisObj.cord.y + otherObj.size.h / 2);
-		Cord botRight(thisObj.cord.x + thisObj.size.w + otherObj.size.w / 2, thisObj.cord.y - thisObj.size.h - otherObj.size.h / 2);
-		const Cord &otherCord = Cord(otherObj.cord.x + otherObj.size.w / 2, otherObj.cord.y - otherObj.size.h / 2);
+		Cord topLeft(thisObj.cord.x - otherObj.size.w / 2, thisObj.cord.y - otherObj.size.h / 2);
+		Cord botRight(thisObj.cord.x + thisObj.size.w + otherObj.size.w / 2, thisObj.cord.y + thisObj.size.h + otherObj.size.h / 2);
+		const Cord &otherCord = Cord(otherObj.cord.x + otherObj.size.w / 2, otherObj.cord.y + otherObj.size.h / 2);
 
-		return (otherCord.x >= topLeft.x && otherCord.x <= botRight.x && otherCord.y >= botRight.y && otherCord.y <= topLeft.y);
+		return (otherCord.x >= topLeft.x && otherCord.x <= botRight.x && otherCord.y <= botRight.y && otherCord.y >= topLeft.y);
 	}
 }

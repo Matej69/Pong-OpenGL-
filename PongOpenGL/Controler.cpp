@@ -2,27 +2,16 @@
 #include "Input.h"
 #include "Paddle.h"
 
-namespace n_controler {
-	float lastX		= 0;
-	float newX		= 0;
-	float deltaX	= 0;
-}
-using namespace n_controler;
+
 
 //***moving left/right will se if object is moving in opposite direction, if yes /1.007 until deltax>/< 0, 
 //***else just change direction
 void Controler::MoveLeft(float deltaTime)
 {	
-	if (deltaX > 0)
-		ownerPaddle->horizontalSpeed /= 1.007;
-	else
-		ownerPaddle->currentAcc		=	-abs(ownerPaddle->horizontalAcc);
+		ownerPaddle->currentAcc		=	-abs(ownerPaddle->horizontalAcc);	
 }
 void Controler::MoveRight(float deltaTime)
 {
-	if (deltaX < 0)
-		ownerPaddle->horizontalSpeed /= 1.007;
-	else
 		ownerPaddle->currentAcc		=	abs(ownerPaddle->horizontalAcc);
 }
 
@@ -46,20 +35,12 @@ void Controler::LimitSpeedIfNescessary()
 	if (ownerPaddle->horizontalSpeed < -ownerPaddle->maxSpeed)
 		ownerPaddle->horizontalSpeed = -ownerPaddle->maxSpeed;
 }
-void Controler::UpdateDeltaX()
-{
-	newX = this->ownerPaddle->cord.x;
-	deltaX = (lastX - newX) *-1;
-	lastX = newX;
-}
 //********************************************
 
 void Controler::UpdateOnInput(float deltaTime)
-{	
-	UpdateDeltaX();
-
+{		
 	if (Input::s_heldKeys[leftScancode])
-	{
+	{		
 		MoveLeft(deltaTime);
 	}
 	else if (Input::s_heldKeys[rightScancode])
@@ -67,12 +48,8 @@ void Controler::UpdateOnInput(float deltaTime)
 		MoveRight(deltaTime);
 	}
 	else
-	{		
-		SDL_Delay(1);			//needed when getting deltaX -> to small values become 0 so we wait slow framerate
-		if (deltaX > 0)
-			ownerPaddle->horizontalSpeed /= 1.007;
-		if(deltaX < 0)
-			ownerPaddle->horizontalSpeed /= 1.007;
+	{			
+		ownerPaddle->horizontalSpeed /= 1.0008;
 		ownerPaddle->currentAcc = 0;
 	}
 

@@ -22,6 +22,9 @@
     <Filter Include="Source Files\GameObjects">
       <UniqueIdentifier>{8ce0afe3-5a44-4ff4-aa48-2ec3a9afc595}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Timers,Globals,FPS,...">
+      <UniqueIdentifier>{cdd63c19-4484-4e46-8250-9aef7624ac9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -33,9 +36,6 @@
     <ClCompile Include="Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FPSTimer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Event.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -44,12 +44,6 @@
     </ClCompile>
     <ClCompile Include="Subscriber.cpp">
       <Filter>Source Files\Subscriber</Filter>
-    </ClCompile>
-    <ClCompile Include="FunctionCallTracker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GlobalStuff.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\GameObjects</Filter>
@@ -74,6 +68,18 @@
     </ClCompile>
     <ClCompile Include="Controler.cpp">
       <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalStuff.cpp">
+      <Filter>Source Files\Timers,Globals,FPS,...</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionCallTracker.cpp">
+      <Filter>Source Files\Timers,Globals,FPS,...</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSTimer.cpp">
+      <Filter>Source Files\Timers,Globals,FPS,...</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +132,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Controler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

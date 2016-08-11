@@ -16,9 +16,10 @@ void GameObject::DrawSprite()
 }
 void GameObject::UpdateGameObjectLogic(float deltaTime)
 {
-	collider.CollisionEffect();
+	collider.CollisionEffect(deltaTime);
 	physics.ApplyForces(deltaTime);
-	physics.RemoveExpiredForces();
+	physics.RemoveExpiredForces();	
+	
 }
 
 GameObject::GameObject(int _x, int _y, int _w, int _h)
