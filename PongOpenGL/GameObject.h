@@ -31,7 +31,21 @@ public:
 	Sprite sprite;
 	Collider collider;
 	Physics physics;
-public:	
+public:
+	/*
+	template<class ClassToReturn>
+		ClassToReturn GetAs(n_gameObject::GObjType objType){
+			if (objType == n_gameObject::GObjType::PADDLE)	return static_cast<ClassToReturn*>(this);
+			if (objType == n_gameObject::GObjType::BALL)	return static_cast<ClassToReturn*>(this);
+		}
+	*/
+	template<class ClassToReturn>
+	ClassToReturn& GetAs() {
+		return static_cast<ClassToReturn&>(*this);
+	}
+
+public:				
+			Cord	GetMiddleCord() const;
 			void	DrawSprite();
 			void	UpdateGameObjectLogic(float deltaTime);
 	virtual	void	UpdateLogic(float deltaTime) = 0;

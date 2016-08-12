@@ -1,5 +1,8 @@
 #include "Input.h"
 #include "Game.h"
+#include "GlobalStuff.h"
+#include "GameObject.h"
+#include "Paddle.h"
 
 #include <iostream>
 #include <string>
@@ -8,7 +11,7 @@ using namespace std;
 map<SDL_Scancode, bool> Input::s_heldKeys;
 map<SDL_Scancode, bool> Input::s_releaseKeys;
 
-void Input::OnInputEvent() {
+void Input::OnInputEvent(Game *game) {
 	SDL_Event e;
 	while (SDL_PollEvent(&e))
 	{
@@ -39,8 +42,8 @@ void Input::OnInputEvent() {
 			}
 			if (e.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
 			{
-				//cout << "escape" << endl;
-			}			
+				//go to menu
+			}		
 		}
 
 		if (e.type == SDL_KEYUP)
@@ -56,15 +59,40 @@ void Input::OnInputEvent() {
 			}
 		}
 		//******************WINDOW********************	
-		if (e.type == SDL_WINDOWEVENT)
+		if (e.type == SDL_WINDOWEVENT) 
 		{
 			if (e.window.event == SDL_WINDOWEVENT_RESIZED)
 			{				
 				int w = n_window::windowSize.w;			int h = n_window::windowSize.w;
 				SDL_GetWindowSize(n_window::window, &w, &h);
-				n_window::windowSize.w = w;				n_window::windowSize.h = h;				
+
+				n_geometry::Size deltaSize(w - n_window::windowSize.w, h - n_window::windowSize.h);
+				n_geometry::Size changedByFactor(w / n_window::windowSize.w, h / n_window::windowSize.h);
+				
+				n_window::windowSize.w = w;				n_window::windowSize.h = h;
+
+				//loop through gameObject and reposition if necessary
+				for (auto it = GameObject::s_gameObjects.begin(); it != GameObject::s_gameObjects.end(); ++it)
+				{
+					//update paddle stuff
+					if ((*it)->type == n_gameObject::GObjType::PADDLE)
+					{
+						//resize paddles according ot new width
+						Size &paddleSize = (*it)->GetAs<Paddle>().size;
+						paddleSize.SetSize(paddleSize.w * changedByFactor.w, paddleSize.h);
+						//reposition bottom paddle on Y-axis
+						if ((*it)->GetAs<Paddle>().positionType == n_paddle::paddlePositionType::BOTTOM)
+							(*it)->cord.y += deltaSize.h;
+					}
+					//reposition ball
+					if ((*it)->type == n_gameObject::GObjType::BALL)
+						(*it)->cord.SetCord(w / 2, h / 2);
+				}
 			}
 		}
+		//******************QUIT********************	
+		if (e.type == SDL_QUIT)
+			game->isRunning = false;
 	}
 }
 void Input::OnKeyDown(SDL_Scancode key) {

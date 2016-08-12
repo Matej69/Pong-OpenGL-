@@ -39,6 +39,6 @@ namespace n_geometry {
 		//2 rect colliding, 2 circles colliding, rect and circle colliding
 	extern bool AreRectsColliding		(const GameObject &thisObj, const GameObject &otherObj);
 	extern bool AreCirclesColliding		(const GameObject &thisObj, const GameObject &otherObj);
-	extern bool IsCircleAndRectColliding(const GameObject &thisRectObj, const GameObject &otherCircleObj);
+	extern bool IsCircleAndRectColliding(GameObject &paddleObj, const GameObject &ballObj);
 }
 #endif

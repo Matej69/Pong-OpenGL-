@@ -21,6 +21,10 @@ void GameObject::UpdateGameObjectLogic(float deltaTime)
 	physics.RemoveExpiredForces();	
 	
 }
+Cord GameObject::GetMiddleCord() const
+{
+	return Cord(cord.x + size.w / 2, cord.y + size.h / 2);
+}
 
 GameObject::GameObject(int _x, int _y, int _w, int _h)
 {		
@@ -32,6 +36,7 @@ GameObject::GameObject(int _x, int _y, int _w, int _h)
 }
 GameObject::GameObject()
 {	
+	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->Register<Collider, void>(this->collider, &Collider::CollisonListUpdate);
 	collider.ownerObject = this;
 	s_gameObjects.push_back(this);
 }

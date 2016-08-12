@@ -41,7 +41,7 @@ void Ball::InitSettings()
 	this->type = GObjType::BALL;
 	sprite.InitSpriteTex("ball.png");	
 	//collider.CollisonListUpdate(); //done by event not here...a.a.
-	this->physics.AddForce(Force(900, 300, 0, 0, 99999, *this));
+	this->physics.AddForce(Force(700, 300, 0, 0, 99999, *this));
 	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->CallEvent<>();	
 }
 

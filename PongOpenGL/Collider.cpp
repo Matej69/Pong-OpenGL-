@@ -1,4 +1,6 @@
 #include "GameObject.h"
+#include "Paddle.h"
+#include "Ball.h"
 
 using namespace n_gameObject;
 
@@ -34,20 +36,45 @@ void Collider::CollisionEffect(float deltaTime)
 	{
 		for (auto it = collidableObjects.begin(); it != collidableObjects.end(); ++it)
 		{
-			//if this object is ball::::::::::::::::::::::::::::::
+			//::::::::::::::::::::::::::::::if this object is ball::::::::::::::::::::::::::::::
 			if (ownerObject->type == GObjType::BALL)
 			{
 				if ((*it)->type == GObjType::PADDLE)
 				{
-					if (n_geometry::IsCircleAndRectColliding(*ownerObject, *(*it)))
+					//if ball is colliding with paddle
+					if (n_geometry::IsCircleAndRectColliding(*(*it),*ownerObject))
 					{
 						colliderTimer.Reset();
-						for (Force &force : ownerObject->physics.forces)
-							force.dirY *= -1;
+						//if ball is on left/right side of paddle just change x-axis movement dir, no need for cnage of y-axis dir
+						if (ownerObject->GetMiddleCord().x < (*it)->cord.x || ownerObject->GetMiddleCord().x >(*it)->cord.x + (*it)->size.w)
+						{
+							bool ballIsOnLeft = ownerObject->GetMiddleCord().x < (*it)->cord.x;
+							for (Force &force : ownerObject->physics.forces)
+							{
+								force.dirX = (ballIsOnLeft) ? -1 : 1;
+								force.dirY = ((*it)->GetAs<Paddle>().positionType == n_paddle::paddlePositionType::TOP) ? 1 : -1;
+							}
+						}
+						//if ball is NOT on left/right side of paddle just change y-axis movement dir, it depends is it TOP/BOTTOM paddle
+						else
+						{
+							for (Force &force : ownerObject->physics.forces)
+							{
+								if ((*it)->GetAs<Paddle>().positionType == n_paddle::paddlePositionType::TOP)
+								{
+									force.dirY = (ownerObject->GetMiddleCord().y < (*it)->cord.y) ? -1 : 1;											
+								}
+								else if ((*it)->GetAs<Paddle>().positionType == n_paddle::paddlePositionType::BOTTOM)
+								{
+									force.dirY = (ownerObject->GetMiddleCord().y > (*it)->cord.y) ? 1 : -1;
+								}																		
+							}
+						}								
 					}
 				}
 			}
-			//if this object is paddle or upgrade::::::::::::::::::::::::::::::
+
+			//::::::::::::::::::::::::::::::if this object is paddle or effec/upgrade::::::::::::::::::::::::::::::
 			else if (ownerObject->type == GObjType::PADDLE || ownerObject->type == GObjType::UPGRADE)
 			{
 				if ((*it)->type == GObjType::BALL)
@@ -58,9 +85,11 @@ void Collider::CollisionEffect(float deltaTime)
 					}
 				}
 			}
+
 		}
 	}
 }
+
 
 Collider::Collider(GameObject &object)
 {
