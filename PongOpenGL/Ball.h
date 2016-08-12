@@ -8,6 +8,7 @@ class Ball : public GameObject
 {
 public:
 	GameObject *lastHitByObj;
+	float maxSpeed;
 public:
 	void UpdateLogic(float deltaTime) override;
 	void InitSettings() override;

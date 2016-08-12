@@ -1,69 +1,8 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  Timer.cpp
-  Subscriber.cpp
-  Sprite.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-  Physics.cpp
-  Paddle.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\paddle.cpp(44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\paddle.cpp(46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Main.cpp
-  ISubscriber.cpp
-  Input.cpp
-e:\pongopengl\pongopengl\sprite.h(8): warning C4099: 'SDL_Texture': type name first seen using 'struct' now seen using 'class'
-  e:\pongopengl\sdl2\include\sdl_render.h(128): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\input.cpp(66): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\input.cpp(72): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\input.cpp(89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  GlobalStuff.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\globalstuff.cpp(36): warning C4101: 'ballIsOnRightSide': unreferenced local variable
-  GameObject.cpp
-e:\pongopengl\pongopengl\gameobject.cpp(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\gameobject.cpp(33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Game.cpp
-e:\pongopengl\pongopengl\sprite.h(8): warning C4099: 'SDL_Texture': type name first seen using 'struct' now seen using 'class'
-  e:\pongopengl\sdl2\include\sdl_render.h(128): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\game.cpp(27): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\game.cpp(28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\game.cpp(32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\game.cpp(40): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-e:\pongopengl\pongopengl\game.cpp(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  FunctionCallTracker.cpp
-  FPSTimer.cpp
-e:\pongopengl\pongopengl\fpstimer.cpp(16): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
-e:\pongopengl\pongopengl\fpstimer.cpp(19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\fpstimer.cpp(20): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
-e:\pongopengl\pongopengl\fpstimer.cpp(33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\fpstimer.cpp(47): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
-e:\pongopengl\pongopengl\fpstimer.cpp(48): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
-  Force.cpp
-  Event.cpp
-  Controler.cpp
-e:\pongopengl\pongopengl\sprite.h(8): warning C4099: 'SDL_Texture': type name first seen using 'struct' now seen using 'class'
-  e:\pongopengl\sdl2\include\sdl_render.h(128): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\controler.cpp(52): warning C4305: '/=': truncation from 'double' to 'float'
   Collider.cpp
 e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
   e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
 e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
   e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-  Ball.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\ball.cpp(20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
-e:\pongopengl\pongopengl\game.cpp(37): warning C4715: 'Game::CreateWindow': not all control paths return a value
+e:\pongopengl\pongopengl\collider.cpp(98): warning C4305: 'initializing': truncation from 'double' to 'float'
   Pong(OpenGL).vcxproj -> E:\PongOpenGL\PongOpenGL\.\Output\Pong(OpenGL).exe

@@ -5,16 +5,21 @@
 
 void Force::ApplyForce(float deltaTime)
 {
-	if (duration <= 0) return;
-	forceX			+=	accX;
-	forceY			+=	accY;
-	ownerGO->cord.x	+=	forceX * dirX * deltaTime;
-	ownerGO->cord.y	+=	forceY * dirY * deltaTime;
-	duration		-=	deltaTime;
+	if (this->duration <= 0)
+	{
+		accX = 0;
+		accY = 0;
+	}
+	forceX += accX;
+	forceY += accY;
+	ownerGO->cord.x += forceX * dirX * deltaTime;
+	ownerGO->cord.y += forceY * dirY * deltaTime;
+	duration -= deltaTime;
 }
 
-Force::Force(float _forceX, float _forceY, float _accX, float _accY, float _duration, GameObject &_ownerGO)
+Force::Force(float _forceX, float _forceY, float _accX, float _accY, float _duration, n_force::forceType _type, GameObject &_ownerGO)
 {
+	this->type = _type;
 	dirX	= 1;
 	dirY	= 1;
 	forceX	= _forceX;	forceY = _forceY;

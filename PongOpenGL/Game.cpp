@@ -59,8 +59,8 @@ void Game::GameLoop() {
 	Event GOlistUpdated(n_event::GAMEOBJECT_LIST_UPDATED);
 
 	//Paddle paddle1(10, 200, 150, 30, n_paddle::paddlePositionType::TOP);	
-	Paddle paddle1(150, 30, n_paddle::paddlePositionType::TOP);
-	Paddle paddle2(150, 30, n_paddle::paddlePositionType::BOTTOM);
+	Paddle paddle1(250, 30, n_paddle::paddlePositionType::TOP);
+	Paddle paddle2(250, 30, n_paddle::paddlePositionType::BOTTOM);
 	Ball ball(10, 160, 30, 30);
 
 	paddle1.controler.SetControls(SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT);
@@ -84,8 +84,6 @@ void Game::GameLoop() {
 		paddle1.UpdateLogic(fpsTimer.deltaTime);		
 		ball.UpdateLogic(fpsTimer.deltaTime);
 
-		
-		
 
 		SDL_RenderPresent(renderer);		
 		//SDL_UpdateWindowSurface(window);	

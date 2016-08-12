@@ -5,15 +5,18 @@
 #include "Game.h"
 
 using namespace n_gameObject;
+using namespace n_force;
 
 void Ball::UpdateLogic(float deltaTime)
 {
 	UpdateGameObjectLogic(deltaTime);
 	//if can bounce call BorderBounce, if it actually bounced->ResetTime
-	if (this->collider.colliderTimer.timePassed > deltaTime) {
+	if (this->collider.colliderTimer.timePassed > deltaTime)
 		if(BorderBounce() == true)
 			this->collider.colliderTimer.Reset();
-	}
+
+	//cout << this->physics.finalForceX << endl;
+	
 }
 bool Ball::BorderBounce()
 {
@@ -38,10 +41,11 @@ bool Ball::BorderBounce()
 
 void Ball::InitSettings()
 {
+	maxSpeed = 1000;
 	this->type = GObjType::BALL;
 	sprite.InitSpriteTex("ball.png");	
 	//collider.CollisonListUpdate(); //done by event not here...a.a.
-	this->physics.AddForce(Force(700, 300, 0, 0, 99999, *this));
+	this->physics.AddForce(Force(100, 300, 0, 0, 99999, forceType::KEEP_AFTER_DURATION_END, *this));
 	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->CallEvent<>();	
 }
 

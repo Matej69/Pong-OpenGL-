@@ -10,9 +10,12 @@ using namespace std;
 class Physics
 {
 public:
+	float finalForceX;
+	float finalForceY;
 	vector<Force> forces;
 	bool active;
 public:
+	void AddToFinalSpeed(Force &force);
 	void ApplyForces(float deltaTime);
 	void RemoveExpiredForces();
 	void RemoveAllForces();
