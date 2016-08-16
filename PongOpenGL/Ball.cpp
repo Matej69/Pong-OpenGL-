@@ -1,6 +1,7 @@
 #include "Ball.h"
 #include "Event.h"
 #include "Collider.h"
+#include "Physics.h"
 #include "Force.h"
 #include "Game.h"
 
@@ -13,11 +14,9 @@ void Ball::UpdateLogic(float deltaTime)
 	//if can bounce call BorderBounce, if it actually bounced->ResetTime
 	if (this->collider.colliderTimer.timePassed > deltaTime)
 		if(BorderBounce() == true)
-			this->collider.colliderTimer.Reset();
-
-	//cout << this->physics.finalForceX << endl;
-	
+			this->collider.colliderTimer.Reset();	
 }
+
 bool Ball::BorderBounce()
 {
 	int radius = this->size.w / 2;
@@ -41,12 +40,17 @@ bool Ball::BorderBounce()
 
 void Ball::InitSettings()
 {
-	maxSpeed = 1000;
+	maxSpeed = 2000;
 	this->type = GObjType::BALL;
 	sprite.InitSpriteTex("ball.png");	
-	//collider.CollisonListUpdate(); //done by event not here...a.a.
+	physics.ownerObj = this;
+
 	this->physics.AddForce(Force(100, 300, 0, 0, 99999, forceType::KEEP_AFTER_DURATION_END, *this));
-	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->CallEvent<>();	
+
+	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->Register<Collider, void>(this->collider, &Collider::CollisonListUpdate);
+	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->CallEvent<>();
+
+	this->physics.addNewForceTimer.Init(0.6f);	//timer is here after we added 1 Force for ball nitial movement		
 }
 
 Ball::Ball(int _x, int _y, int _w, int _h) : GameObject(_x, _y, _w, _h)
@@ -59,4 +63,6 @@ Ball::Ball()
 }
 Ball::~Ball()
 {
+	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->RemoveSubscriberFromAll<Ball>(this);
+	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->CallEvent<>();
 }

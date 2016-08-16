@@ -25,6 +25,7 @@ void Controler::SetControls(SDL_Scancode _leftScancode, SDL_Scancode _rightScanc
 //********************************************
 void Controler::ApplyMovement(float deltaTime)
 {
+	
 	ownerPaddle->horizontalSpeed += ownerPaddle->currentAcc;
 	ownerPaddle->cord.x += ownerPaddle->horizontalSpeed * deltaTime;
 }
@@ -52,9 +53,9 @@ void Controler::UpdateOnInput(float deltaTime)
 		ownerPaddle->horizontalSpeed /= 1.0008;
 		ownerPaddle->currentAcc = 0;
 	}
-
 	LimitSpeedIfNescessary();
-	ApplyMovement(deltaTime);
+	ApplyMovement(deltaTime);	
+	
 }
 
 Controler::Controler()

@@ -13,7 +13,7 @@ public:
 	static map<SDL_Scancode, bool> s_heldKeys;
 	static map<SDL_Scancode, bool> s_releaseKeys;
 public:
-	void OnInputEvent(Game *game);
+	void OnInputEvent();
 	void OnKeyDown(SDL_Scancode key);
 	void OnKeyUp(SDL_Scancode key);
 	bool IsKeyUp(SDL_Scancode key);

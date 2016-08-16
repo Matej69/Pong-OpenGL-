@@ -46,11 +46,19 @@ void Game::PaintBackground(int r, int g, int b, int a) {
 #include "Physics.h"
 #include "Timer.h"
 
+#include "Screen.h"
+#include "ScreenGame.h"
+#include "ScreenMenu.h"
+#include "Button.h"
+
+bool Game::isRunning = true;
 
 void Game::GameLoop() {
 	isRunning = true;
 	Input input;
 	FPSTimer fpsTimer;
+
+	FunctionCallTracker::isPrinting = true;
 
 	//all events are crated before and accesed over Event::s_events[eventID]....
 	Event keyup(n_event::KEY_UP); 
@@ -58,15 +66,11 @@ void Game::GameLoop() {
 	Event keydown(n_event::KEY_DOWN);
 	Event GOlistUpdated(n_event::GAMEOBJECT_LIST_UPDATED);
 
-	//Paddle paddle1(10, 200, 150, 30, n_paddle::paddlePositionType::TOP);	
-	Paddle paddle1(250, 30, n_paddle::paddlePositionType::TOP);
-	Paddle paddle2(250, 30, n_paddle::paddlePositionType::BOTTOM);
-	Ball ball(10, 160, 30, 30);
+	FunctionCallTracker::isPrinting = false;
 
-	paddle1.controler.SetControls(SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT);
-	paddle2.controler.SetControls(SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT);
-		
-
+	n_button::UpdateDefaultProperties();			
+	Screen::currentScreen = new ScreenMenu();		
+	
 	while (isRunning) 
 	{
 		fpsTimer.UpdateDeltaTime();
@@ -74,19 +78,14 @@ void Game::GameLoop() {
 
 		PaintBackground(1, 10, 40, 160);		
 		
-		input.OnInputEvent(this);
+		input.OnInputEvent();
 
-		paddle1.DrawSprite();
-		paddle2.DrawSprite();
-		ball.DrawSprite();
-				
-		paddle2.UpdateLogic(fpsTimer.deltaTime);
-		paddle1.UpdateLogic(fpsTimer.deltaTime);		
-		ball.UpdateLogic(fpsTimer.deltaTime);
-
-
+		Screen::currentScreen->ChangeIfNeeded();
+		Screen::currentScreen->Update(fpsTimer.deltaTime);
+		Screen::currentScreen->Draw();		
+		
 		SDL_RenderPresent(renderer);		
-		//SDL_UpdateWindowSurface(window);	
+		//SDL_UpdateWindowSurface(window);			cout << GameObject::s_gameObjects.size() << endl;
 	}
 
 

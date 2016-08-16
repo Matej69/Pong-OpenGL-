@@ -9,6 +9,7 @@ class FunctionCallTracker
 {
 public:
 	static int levelNum;
+	static bool isPrinting;
 public:
 	int level;
 	string endMessage;

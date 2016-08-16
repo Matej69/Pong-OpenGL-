@@ -17,7 +17,7 @@ public:
 
 public:		
 	void CallFunction(Params... parameters) { 
-			FunctionCallTracker debugF("Calling functioPointer function from 'Subscriber.h' ", "Sprite is created OR already exist");
+			FunctionCallTracker debugF("Calling functioPointer function from 'Subscriber.h' ", "'CallFunction' is executed SUCCESSFULLY");
 			(gameObject->*gameObjectFunction)(parameters...);
 		};
 

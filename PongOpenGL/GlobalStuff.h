@@ -40,5 +40,10 @@ namespace n_geometry {
 	extern bool AreRectsColliding		(const GameObject &thisObj, const GameObject &otherObj);
 	extern bool AreCirclesColliding		(const GameObject &thisObj, const GameObject &otherObj);
 	extern bool IsCircleAndRectColliding(GameObject &paddleObj, const GameObject &ballObj);
+	extern bool IsCordInsideRect(GameObject &rectObj, const Cord &cord);
+}
+
+namespace n_effects {
+	extern void ResizeByPercent(float f, GameObject &gameObject);
 }
 #endif

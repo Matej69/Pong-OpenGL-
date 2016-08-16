@@ -8,20 +8,25 @@ using namespace n_paddle;
 
 void Paddle::UpdateLogic(float deltaTime)
 {
-	UpdateGameObjectLogic(deltaTime);	
-	controler.UpdateOnInput(deltaTime);
-	RepositionIfOutOfBounds();
+		//******************************if pointer is not setup here it passes wrong values**************************************
+	//controler.ownerPaddle = this;
+	
+	UpdateGameObjectLogic(deltaTime);		
+	controler.UpdateOnInput(deltaTime);	
+	RepositionIfOutOfBounds();	
+
+	//cout << "Is it number : " << controler.ownerPaddle->cord.x << endl;
 }
 void Paddle::InitSettings()
-{
-	this->type = GObjType::PADDLE;
+{	
+	this->type = GObjType::PADDLE; 
 	sprite.InitSpriteTex("paddle.png");	
 	horizontalSpeed = 200;
 	maxSpeed		= 400;
 	horizontalAcc	= 0.5f;
 	currentAcc		= horizontalAcc;
-	//collider.CollisonListUpdate(); //done by event not here...a.a.
 	controler.ownerPaddle = this;
+	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->Register<Collider, void>(this->collider, &Collider::CollisonListUpdate);
 	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->CallEvent<>();
 }
 
@@ -42,7 +47,7 @@ Paddle::Paddle(int _x, int _y, int _w, int _h, paddlePositionType _type) : GameO
 Paddle::Paddle(int _w, int _h, paddlePositionType _type) : GameObject()
 {
 	this->size.SetSize(_w, _h);
-	int spawnVerOffset = 25;
+	int spawnVerOffset = 35;
 	if(_type == paddlePositionType::TOP)		this->cord.SetCord(n_window::windowSize.w / 2, spawnVerOffset);
 	if (_type == paddlePositionType::BOTTOM)	this->cord.SetCord(n_window::windowSize.w / 2, n_window::windowSize.h - this->size.h - spawnVerOffset);
 	this->positionType = _type;
@@ -54,4 +59,6 @@ Paddle::Paddle()
 }
 Paddle::~Paddle()
 {
+	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->RemoveSubscriberFromAll<Paddle>(this);
+	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->CallEvent<>();
 }

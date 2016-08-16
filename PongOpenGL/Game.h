@@ -15,7 +15,7 @@ namespace n_window {
 class Game
 {
 public:
-	bool isRunning;
+	static bool isRunning;
 public:
 	bool CreateWindow(int _w, int _h);
 	void PaintBackground(int r, int g, int b, int a);

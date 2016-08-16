@@ -18,6 +18,7 @@ using namespace std;
 #include "FunctionCallTracker.h"
 #include "ISubscriber.h"
 #include "Subscriber.h"
+#include "Button.h"
 
 
 namespace n_event {
@@ -53,6 +54,7 @@ public:
 			for (ISubscriber *sub : subscribers) {
 				if (sub->subscriberObjType == "GameObject") { static_cast<Subscriber<GameObject, void, Params...>*>(sub)->CallFunction(params...)	; }
 				if (sub->subscriberObjType == "Collider")	{ static_cast<Subscriber<Collider, void, Params...>*>(sub)->CallFunction(params...)		; }
+				if (sub->subscriberObjType == "Button") { static_cast<Subscriber<Button, void, Params...>*>(sub)->CallFunction(params...); }
 			}
 		}
 	template<class Object,class Return, class ...Params >

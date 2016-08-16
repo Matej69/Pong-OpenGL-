@@ -9,10 +9,10 @@ namespace n_spriteFile {
 }
 
 void Sprite::Draw(int x, int y, int w, int h)
-{
-	//cout << "**************************" << endl;
+{	
 	SDL_Rect destination = { x,y,w,h };	
-	SDL_RenderCopy(n_window::renderer, texture, NULL, &destination);
+	SDL_RenderCopy(n_window::renderer, texture, NULL, &destination);	
+		//cout << x << " " << y << " " << w << " " << h << endl;
 	//****rotating	SDL_Point pivot = { w/2,h/2 };	SDL_RenderCopyEx(n_window::renderer, texture, NULL, &destination, a+=0.2, &pivot, SDL_FLIP_HORIZONTAL);
 }
 void Sprite::InitSpriteTex(string imgName)
@@ -22,7 +22,6 @@ void Sprite::InitSpriteTex(string imgName)
 	src = n_spriteFile::root + imgName;
 	SDL_Surface *surface = IMG_Load(src.c_str());
 	texture = SDL_CreateTextureFromSurface(n_window::renderer, surface);
-
 	SDL_FreeSurface(surface);
 }
 

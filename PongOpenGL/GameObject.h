@@ -9,21 +9,33 @@
 using namespace n_geometry;
 
 #include <vector>
+#include <utility>
 using namespace std;
 
 namespace n_gameObject {
 	enum GObjType {
 		PADDLE,
 		BALL,
-		UPGRADE
+		UPGRADE,
+		BUTTON
+	};
+	enum sizeStateType
+	{
+		NOT_RESIZING,
+		RESIZING,
+		RESIZING_END
 	};
 }
+
 
 class GameObject
 {
 public:
+	void ResizeAndDestroyIfToSmall(float num);
+public:
 	n_gameObject::GObjType		type;
-	static vector<GameObject*>	s_gameObjects;
+	n_gameObject::sizeStateType sizeState;
+	static vector<GameObject*>	s_gameObjects;	
 public:
 	Cord cord;
 	Size size;
@@ -32,13 +44,6 @@ public:
 	Collider collider;
 	Physics physics;
 public:
-	/*
-	template<class ClassToReturn>
-		ClassToReturn GetAs(n_gameObject::GObjType objType){
-			if (objType == n_gameObject::GObjType::PADDLE)	return static_cast<ClassToReturn*>(this);
-			if (objType == n_gameObject::GObjType::BALL)	return static_cast<ClassToReturn*>(this);
-		}
-	*/
 	template<class ClassToReturn>
 	ClassToReturn& GetAs() {
 		return static_cast<ClassToReturn&>(*this);

@@ -9,9 +9,16 @@
 
 vector<GameObject*> GameObject::s_gameObjects;
 
+void GameObject::ResizeAndDestroyIfToSmall(float num)
+{
+	if (this->sizeState == n_gameObject::sizeStateType::RESIZING)
+		n_effects::ResizeByPercent(num, *this);
+	if (this->size.w < 5 || this->size.h < 5)
+		this->sizeState = n_gameObject::sizeStateType::RESIZING_END;
+}
 
 void GameObject::DrawSprite()
-{
+{	
 	sprite.Draw((int)cord.x, (int)cord.y, (int)size.w, (int)size.h);
 }
 void GameObject::UpdateGameObjectLogic(float deltaTime)
@@ -19,6 +26,9 @@ void GameObject::UpdateGameObjectLogic(float deltaTime)
 	collider.CollisionEffect(deltaTime);
 	physics.ApplyForces(deltaTime);
 	physics.RemoveExpiredForces();	
+
+	float resizeFactor = 0.9992f;
+	ResizeAndDestroyIfToSmall(resizeFactor);
 	
 }
 Cord GameObject::GetMiddleCord() const
@@ -28,21 +38,21 @@ Cord GameObject::GetMiddleCord() const
 
 GameObject::GameObject(int _x, int _y, int _w, int _h)
 {		
-	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->Register<Collider, void>(this->collider, &Collider::CollisonListUpdate);
 	cord.x = _x;		cord.y = _y;
 	size.w = _w;		size.h = _h;
 	collider.ownerObject = this;
 	s_gameObjects.push_back(this);
+	sizeState = n_gameObject::sizeStateType::NOT_RESIZING;
 }
 GameObject::GameObject()
 {	
-	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->Register<Collider, void>(this->collider, &Collider::CollisonListUpdate);
-	collider.ownerObject = this;
+	collider.ownerObject = this;	
 	s_gameObjects.push_back(this);
+	sizeState = n_gameObject::sizeStateType::NOT_RESIZING;
 }
 GameObject::~GameObject()
 {
-	FunctionCallTracker debugF("GameObject Destructor is being called", "GameObject is destroyed susscesfully");
+	FunctionCallTracker debugF("GameObject Destructor is being called", "GameObject is destroyed susscesfully");	
 	//removing this gameObject from list of gameObjects	
 	for (auto it = s_gameObjects.begin(); it != s_gameObjects.end(); ++it)
 	{
@@ -54,4 +64,7 @@ GameObject::~GameObject()
 	//********** GameObjectListUpdated event is being called that will inform PADDLE,BALL,UPGRADE... to refresh
 	//********** their local gameObjectList(erase everithing, go through every object and deside will it be in local
 	//********** list or not depending on type)
+
+
+	
 }

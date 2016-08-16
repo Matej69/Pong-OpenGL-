@@ -34,8 +34,7 @@ namespace n_geometry {
 	bool IsCircleAndRectColliding(GameObject &paddleObj, const GameObject &ballObj) {	
 		Paddle &PaddleObj = paddleObj.GetAs<Paddle>();
 		bool ballIsOnRightSide;
-		//apply collision only if TOP/BOTTOM of paddle is touched by ball, 'ballIsOnRightSide' turnes
-		
+		//apply collision only if TOP/BOTTOM of paddle is touched by ball, 'ballIsOnRightSide' turnes		
 		
 		Cord topLeft(paddleObj.cord.x - ballObj.size.w / 2, paddleObj.cord.y - ballObj.size.h / 2);
 		Cord botRight(paddleObj.cord.x + paddleObj.size.w + ballObj.size.w / 2, paddleObj.cord.y + paddleObj.size.h + ballObj.size.h / 2);
@@ -44,5 +43,22 @@ namespace n_geometry {
 		
 		bool thereIsCollision = (ballMiddleCord.x >= topLeft.x && ballMiddleCord.x <= botRight.x && ballMiddleCord.y <= botRight.y && ballMiddleCord.y >= topLeft.y);
 		return thereIsCollision;
+	}
+
+	bool IsCordInsideRect(GameObject &rect, const Cord &cord) {
+		if (cord.x > rect.cord.x && cord.y > rect.cord.y && cord.x < rect.cord.x + rect.size.w && cord.y > rect.cord.y &&
+			cord.x > rect.cord.x && cord.y < rect.cord.y + rect.size.h && cord.x < rect.cord.x + rect.size.w && rect.cord.y + rect.size.h)
+			return true;
+		return false;
+	}
+}
+
+namespace n_effects {
+	void ResizeByPercent(float f, GameObject &obj)
+	{
+		Size reduceToSize(obj.size.w * f, obj.size.h * f);
+		Cord moveToCord(obj.cord.x + (obj.size.w - reduceToSize.w)/2, obj.cord.y + (obj.size.h - reduceToSize.h) / 2);
+		obj.size.SetSize(reduceToSize.w, reduceToSize.h);
+		obj.cord.SetCord(moveToCord.x, moveToCord.y);
 	}
 }
