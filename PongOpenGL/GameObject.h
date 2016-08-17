@@ -17,7 +17,8 @@ namespace n_gameObject {
 		PADDLE,
 		BALL,
 		UPGRADE,
-		BUTTON
+		BUTTON,
+		PICKUP_EFFECT
 	};
 	enum sizeStateType
 	{

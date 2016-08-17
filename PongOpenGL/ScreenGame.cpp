@@ -2,14 +2,37 @@
 #include "FunctionCallTracker.h"
 #include "Event.h"
 #include "Game.h"
+#include "EffectOnPickup.h"
 
 #include <stdlib.h> 
 #include <time.h>
 
+using namespace std;
 using namespace n_screen;
 
 pair<int, Cord> ScreenGame::infoAboutBallsToAdd = make_pair(0, Cord(200, 200));
+vector<Cord> ScreenGame::CordsForEffects;
 
+
+void ScreenGame::UpdateEffectsIfNeeded()
+{
+	//checking if effec should be removed
+	for (auto it = GameObject::s_gameObjects.begin(); it != GameObject::s_gameObjects.end();)
+	{
+		if ((*it)->type == n_gameObject::GObjType::PICKUP_EFFECT && (*it)->size.w > n_effectOnPickup::maxSize)
+			it = GameObject::s_gameObjects.erase(it);
+		else
+			++it;
+	}
+	//if there is no effects to be added just skip adding part
+	if (ScreenGame::CordsForEffects.size() == 0)
+		return;
+	for (Cord &cord : ScreenGame::CordsForEffects)
+	{
+		effects.push_back(new EffectOnPickup(cord.x, cord.y));
+	}
+	CordsForEffects.clear();
+}
 void ScreenGame::AddMarkedBalls()
 {	
 	int &num = ScreenGame::infoAboutBallsToAdd.first;
@@ -57,9 +80,6 @@ void ScreenGame::Init()
 }
 void ScreenGame::Update(float deltaTime)
 {	
-	//for (GameObject *gameObject : GameObject::s_gameObjects) {
-	//	gameObject->UpdateLogic(deltaTime);
-	//}	
 	for (auto it = GameObject::s_gameObjects.begin(); it != GameObject::s_gameObjects.end();)
 	{
 		(*it)->UpdateLogic(deltaTime);
@@ -68,8 +88,9 @@ void ScreenGame::Update(float deltaTime)
 		else
 			++it;
 	}
-	//add new balls if needed, must be outside for loop that use gameObject*
+	//add new balls, add/remove Effects if needed, must be outside for loop that use gameObject*
 	AddMarkedBalls();
+	UpdateEffectsIfNeeded();
 
 	if (upgradeTimer.IsFinished()) {
 		SpawnRandomUpgrade();

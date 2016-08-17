@@ -4,6 +4,7 @@
 #include "Sprite.h"
 
 
+
 namespace n_geometry {
 	void Cord::SetCord(float a, float b) { x = a; y = b; }
 	Cord::Cord(float n1, float n2) : x(n1), y(n2) {};
@@ -58,6 +59,13 @@ namespace n_effects {
 	{
 		Size reduceToSize(obj.size.w * f, obj.size.h * f);
 		Cord moveToCord(obj.cord.x + (obj.size.w - reduceToSize.w)/2, obj.cord.y + (obj.size.h - reduceToSize.h) / 2);
+		obj.size.SetSize(reduceToSize.w, reduceToSize.h);
+		obj.cord.SetCord(moveToCord.x, moveToCord.y);
+	}
+	void IncreaseByPercent(float f, GameObject &obj)
+	{
+		Size reduceToSize(obj.size.w * f, obj.size.h * f);
+		Cord moveToCord(obj.cord.x + (obj.size.w - reduceToSize.w) / 2, obj.cord.y + (obj.size.h - reduceToSize.h) / 2);
 		obj.size.SetSize(reduceToSize.w, reduceToSize.h);
 		obj.cord.SetCord(moveToCord.x, moveToCord.y);
 	}

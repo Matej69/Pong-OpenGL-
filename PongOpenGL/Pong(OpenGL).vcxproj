@@ -162,6 +162,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Controler.cpp" />
+    <ClCompile Include="EffectOnPickup.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="Force.cpp" />
     <ClCompile Include="FPSTimer.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Controler.h" />
+    <ClInclude Include="EffectOnPickup.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Force.h" />
     <ClInclude Include="FPSTimer.h" />

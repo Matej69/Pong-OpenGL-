@@ -45,5 +45,6 @@ namespace n_geometry {
 
 namespace n_effects {
 	extern void ResizeByPercent(float f, GameObject &gameObject);
+	extern void IncreaseByPercent(float f, GameObject &gameObject);
 }
 #endif

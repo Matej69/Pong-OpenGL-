@@ -5,6 +5,7 @@
 #include "Screen.h"
 #include "ScreenGame.h"
 #include "FunctionCallTracker.h"
+#include "EffectOnPickup.h"
 
 using namespace n_gameObject;
 using namespace n_force;
@@ -124,9 +125,12 @@ void Collider::CollisionEffect(float deltaTime)
 						continue;
 
 					if (n_geometry::IsCircleAndRectColliding(*ownerObject, *(*it)) && upgrade.isCollidable)
-					{				
+					{		
+						
+						ScreenGame::CordsForEffects.push_back(Cord(upgrade.GetMiddleCord().x - n_effectOnPickup::w/2, upgrade.GetMiddleCord().y - n_effectOnPickup::h/2));
 						upgrade.sizeState = n_gameObject::sizeStateType::RESIZING;
 						upgrade.isCollidable = false;
+
 						switch (upgrade.typeOfUpgrade)
 						{
 							case n_upgrade::upgradeType::PADDLE_INCREASE: 

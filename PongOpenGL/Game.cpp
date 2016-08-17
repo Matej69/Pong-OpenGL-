@@ -50,6 +50,7 @@ void Game::PaintBackground(int r, int g, int b, int a) {
 #include "ScreenGame.h"
 #include "ScreenMenu.h"
 #include "Button.h"
+#include "EffectOnPickup.h"
 
 bool Game::isRunning = true;
 
@@ -69,7 +70,9 @@ void Game::GameLoop() {
 	FunctionCallTracker::isPrinting = false;
 
 	n_button::UpdateDefaultProperties();			
-	Screen::currentScreen = new ScreenMenu();		
+	Screen::currentScreen = new ScreenMenu();	
+
+	//EffectOnPickup effect(300, 300, 1.00035);
 	
 	while (isRunning) 
 	{
@@ -82,7 +85,12 @@ void Game::GameLoop() {
 
 		Screen::currentScreen->ChangeIfNeeded();
 		Screen::currentScreen->Update(fpsTimer.deltaTime);
-		Screen::currentScreen->Draw();		
+		Screen::currentScreen->Draw();	
+
+		//effect.UpdateLogic(fpsTimer.deltaTime);
+		//effect.DrawSprite();
+
+		//Sprite s("UpgradePickupEffect.png");
 		
 		SDL_RenderPresent(renderer);		
 		//SDL_UpdateWindowSurface(window);			cout << GameObject::s_gameObjects.size() << endl;
