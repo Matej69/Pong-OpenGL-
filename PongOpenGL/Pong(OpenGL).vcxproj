@@ -175,6 +175,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="PointsLayer.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenGame.cpp" />
     <ClCompile Include="ScreenMenu.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="ISubscriber.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Physics.h" />
+    <ClInclude Include="PointsLayer.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenGame.h" />

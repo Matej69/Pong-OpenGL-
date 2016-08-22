@@ -8,10 +8,17 @@
 #include "Ball.h"
 #include "Paddle.h"
 #include "Upgrade.h"
+#include "PointsLayer.h"
 class EffectOnPickup;
+
+#define PADDLE_HEALTH 4
 
 class ScreenGame : public Screen
 {
+
+public:
+	n_pointsLayer::PointsLayer *pointsLayer;
+	bool gameEnded;
 public:
 	vector<Paddle*> paddles;
 	vector<Ball*> balls;

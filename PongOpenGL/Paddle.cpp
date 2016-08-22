@@ -21,10 +21,13 @@ void Paddle::InitSettings()
 {	
 	this->type = GObjType::PADDLE; 
 	sprite.InitSpriteTex("paddle.png");	
+
 	horizontalSpeed = 200;
 	maxSpeed		= 400;
 	horizontalAcc	= 0.5f;
 	currentAcc		= horizontalAcc;
+	health			= 10;
+
 	controler.ownerPaddle = this;
 	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->Register<Collider, void>(this->collider, &Collider::CollisonListUpdate);
 	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->CallEvent<>();
@@ -38,6 +41,11 @@ void Paddle::RepositionIfOutOfBounds()
 		this->cord.x = n_window::windowSize.w;
 		
 }
+void Paddle::TakeDamage(int amount)
+{
+	this->health -= amount;
+}
+
 
 Paddle::Paddle(int _x, int _y, int _w, int _h, paddlePositionType _type) : GameObject(_x,_y,_w,_h)
 {

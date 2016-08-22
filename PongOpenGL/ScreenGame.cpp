@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "EffectOnPickup.h"
 
+
 #include <stdlib.h> 
 #include <time.h>
 
@@ -58,12 +59,11 @@ void ScreenGame::SpawnRandomUpgrade()
 	upgrades.push_back(new Upgrade(cord.x, cord.y, 80, 80, static_cast<n_upgrade::upgradeType>(upgradeID)));
 }
 
-
-
 void ScreenGame::Init()
 {
 	srand(time(NULL));
 	upgradeTimer.Init(6);
+	gameEnded = false;
 
 	type = screenType::GAME;
 	Screen::typeChangeHolder = type;
@@ -74,8 +74,14 @@ void ScreenGame::Init()
 	paddles.push_back(new Paddle(250, 30, n_paddle::paddlePositionType::BOTTOM));
 	paddles[0]->controler.SetControls(SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT);
 	paddles[1]->controler.SetControls(SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT);
+	paddles[0]->health = PADDLE_HEALTH;
+	paddles[1]->health = PADDLE_HEALTH;
+
+
 
 	balls.push_back(new Ball(390, 390, 40, 40));	
+
+	pointsLayer = new n_pointsLayer::PointsLayer(PADDLE_HEALTH);
 	
 }
 void ScreenGame::Update(float deltaTime)
@@ -96,7 +102,12 @@ void ScreenGame::Update(float deltaTime)
 		SpawnRandomUpgrade();
 		upgradeTimer.Reset();
 	}
-	upgradeTimer.Tick(deltaTime);
+	
+	pointsLayer->Update(deltaTime);
+	upgradeTimer.Tick(deltaTime);	
+
+	if (this->gameEnded)
+		Screen::currentScreen->ChangeTo(n_screen::screenType::MENU);
 }
 void ScreenGame::Draw()
 {	
@@ -114,4 +125,9 @@ ScreenGame::ScreenGame()
 ScreenGame::~ScreenGame()
 {
 	FunctionCallTracker debugF("Constructor for 'ScreenGame' is being destroyed", "construction is destroyed");
+	paddles.clear();
+	balls.clear();
+	upgrades.clear();
+	effects.clear();
+	GameObject::s_gameObjects.clear();
 }

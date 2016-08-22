@@ -20,6 +20,9 @@ public:
 	float	horizontalAcc;
 	float	currentAcc;
 	float	maxSpeed;
+	float	health;
+public:
+	void TakeDamage(int amount);
 public:
 	n_paddle::paddlePositionType positionType;
 public:

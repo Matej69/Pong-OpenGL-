@@ -79,6 +79,7 @@ void Game::GameLoop() {
 		fpsTimer.UpdateDeltaTime();
 		fpsTimer.UpdateFramesPerSec();
 
+		
 		PaintBackground(1, 10, 40, 160);		
 		
 		input.OnInputEvent();

@@ -1,6 +1,5 @@
 e:\pongopengl\pongopengl\debug\vc140.pdb
 e:\pongopengl\pongopengl\debug\vc140.idb
-e:\pongopengl\pongopengl\debug\effectonpickup.obj
 e:\pongopengl\pongopengl\debug\event.obj
 e:\pongopengl\pongopengl\debug\force.obj
 e:\pongopengl\pongopengl\debug\fpstimer.obj
@@ -13,6 +12,7 @@ e:\pongopengl\pongopengl\debug\isubscriber.obj
 e:\pongopengl\pongopengl\debug\main.obj
 e:\pongopengl\pongopengl\debug\paddle.obj
 e:\pongopengl\pongopengl\debug\physics.obj
+e:\pongopengl\pongopengl\debug\pointslayer.obj
 e:\pongopengl\pongopengl\debug\screen.obj
 e:\pongopengl\pongopengl\debug\screengame.obj
 e:\pongopengl\pongopengl\debug\screenmenu.obj
@@ -24,6 +24,7 @@ e:\pongopengl\pongopengl\debug\ball.obj
 e:\pongopengl\pongopengl\debug\button.obj
 e:\pongopengl\pongopengl\debug\collider.obj
 e:\pongopengl\pongopengl\debug\controler.obj
+e:\pongopengl\pongopengl\debug\effectonpickup.obj
 e:\pongopengl\pongopengl\output\pong(opengl).ilk
 e:\pongopengl\pongopengl\output\pong(opengl).exe
 e:\pongopengl\pongopengl\output\pong(opengl).pdb

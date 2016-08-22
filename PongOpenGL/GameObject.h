@@ -18,7 +18,8 @@ namespace n_gameObject {
 		BALL,
 		UPGRADE,
 		BUTTON,
-		PICKUP_EFFECT
+		PICKUP_EFFECT,
+		NON_SPECIFIC
 	};
 	enum sizeStateType
 	{
