@@ -60,15 +60,21 @@ bool Ball::BorderBounce()
 		{
 			if (obj->type == n_gameObject::GObjType::PADDLE)
 			{
+				//IF BALL HIT TOP, REDUCE HEALTH OF TOP PADDLE AND GAIN HEALTH TO bOTTOM ONE
 				if (this->cord.y < n_window::windowSize.h / 2 && obj->GetAs<Paddle>().positionType == n_paddle::TOP && this->lastHitByObj != NULL) {
 					(obj)->GetAs<Paddle>().TakeDamage(1);
-					static_cast<ScreenGame*>(Screen::currentScreen)->pointsLayer->MovePointer(n_pointsLayer::pointerDirType::UP);
-					return true;
+					static_cast<ScreenGame*>(Screen::currentScreen)->pointsLayer->MovePointer(n_pointsLayer::pointerDirType::UP);					
 				}
-				else if (this->cord.y > n_window::windowSize.h / 2 && obj->GetAs<Paddle>().positionType == n_paddle::BOTTOM && this->lastHitByObj != NULL) {
+				else if (this->cord.y < n_window::windowSize.h / 2 && obj->GetAs<Paddle>().positionType == n_paddle::BOTTOM && this->lastHitByObj != NULL) {
+					(obj)->GetAs<Paddle>().TakeDamage(-1);
+				}
+				//IF BALL HIT BOTTOM, REDUCE HEALTH OF BOTTOM PADDLE AND GAIN HEALTH TO TOP	ONE 
+				if (this->cord.y > n_window::windowSize.h / 2 && obj->GetAs<Paddle>().positionType == n_paddle::BOTTOM && this->lastHitByObj != NULL) {
 					(obj)->GetAs<Paddle>().TakeDamage(1);
-					static_cast<ScreenGame*>(Screen::currentScreen)->pointsLayer->MovePointer(n_pointsLayer::pointerDirType::DOWN);
-					return true;
+					static_cast<ScreenGame*>(Screen::currentScreen)->pointsLayer->MovePointer(n_pointsLayer::pointerDirType::DOWN);					
+				}
+				else if (this->cord.y > n_window::windowSize.h / 2 && obj->GetAs<Paddle>().positionType == n_paddle::TOP && this->lastHitByObj != NULL) {
+					(obj)->GetAs<Paddle>().TakeDamage(-1);
 				}
 			}
 		}
@@ -85,7 +91,7 @@ void Ball::InitSettings()
 	sprite.InitSpriteTex("ball.png");	
 	physics.ownerObj = this;
 
-	this->physics.AddForce(Force(100, 300, 0, 0, 99999, forceType::KEEP_AFTER_DURATION_END, *this));
+	this->physics.AddForce(Force(100, 600 /*300*/, 0, 0, 99999, forceType::KEEP_AFTER_DURATION_END, *this));
 
 	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->Register<Collider, void>(this->collider, &Collider::CollisonListUpdate);
 	Event::s_events[n_event::EType::GAMEOBJECT_LIST_UPDATED]->CallEvent<>();

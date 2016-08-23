@@ -96,10 +96,6 @@ namespace n_pointsLayer {
 	void PointsLayer::Init(int _health)
 	{
 		Size winSize = n_window::windowSize;
-		smiles.push_back( ObjPtr (new NonSpecificObject(0, 0, SMILE_SIZE, SMILE_SIZE, nonSpecObjType::SMILEY)));
-		smiles.push_back(ObjPtr(new NonSpecificObject(winSize.w-SMILE_SIZE, 0, SMILE_SIZE, SMILE_SIZE, nonSpecObjType::SMILEY)));
-		smiles.push_back(ObjPtr(new NonSpecificObject(0, winSize.h - SMILE_SIZE, SMILE_SIZE, SMILE_SIZE, nonSpecObjType::SMILEY)));
-		smiles.push_back( ObjPtr (new NonSpecificObject(winSize.w - SMILE_SIZE, winSize.h - SMILE_SIZE, SMILE_SIZE, SMILE_SIZE, nonSpecObjType::SMILEY)));
 
 		pointers.push_back( ObjPtr(new NonSpecificObject(0, winSize.h / 2 - POINTER_SIZE/2, POINTER_SIZE, POINTER_SIZE, nonSpecObjType::POINTER)));
 		pointers.push_back(ObjPtr(new NonSpecificObject(winSize.w - POINTER_SIZE, winSize.h / 2 - POINTER_SIZE / 2, POINTER_SIZE, POINTER_SIZE, nonSpecObjType::POINTER)));
@@ -120,15 +116,14 @@ namespace n_pointsLayer {
 	}
 	void PointsLayer::Update(float deltaTime)
 	{
-		for (ObjPtr obj : smiles)	{
-			obj->UpdateLogic(deltaTime);
-		}
+
 		for (ObjPtr obj : pointers) {
 			obj->UpdateLogic(deltaTime);
 		}
 		for (ObjPtr obj : splitters) {
 			obj->UpdateLogic(deltaTime);
 		}
+				
 
 		//spawn explosions
 		if (!explosionSpawned)	{
@@ -137,11 +132,11 @@ namespace n_pointsLayer {
 					int explosionWidth = n_window::windowSize.w / numOfExplosions;
 					if (paddle->positionType == n_paddle::TOP) {						
 						for (int i = 0; i < numOfExplosions; ++i)
-							explosions.push_back(new Explosion(i * explosionWidth, -explosionWidth * 1.4f, explosionWidth*4, explosionWidth*4));
+							explosions.push_back(new Explosion(i * explosionWidth - 90, -explosionWidth * 1.4f, explosionWidth*4, explosionWidth*4));
 					}
 					if (paddle->positionType == n_paddle::BOTTOM) {
 						for (int i = 0; i < numOfExplosions; ++i)
-							explosions.push_back(new Explosion(i * explosionWidth, n_window::windowSize.h - explosionWidth * 1.4f, explosionWidth*4, explosionWidth*4));
+							explosions.push_back(new Explosion(i * explosionWidth - 90, n_window::windowSize.h - explosionWidth*2.4f, explosionWidth*4, explosionWidth*4));
 					}
 					explosionSpawned = true;
 				}				

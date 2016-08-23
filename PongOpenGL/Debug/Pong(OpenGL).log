@@ -1,119 +1,48 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'e:\pongopengl\pongopengl\debug\ball.obj' because it is being used by another process.
-C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   Upgrade.cpp
   Timer.cpp
   Subscriber.cpp
   Sprite.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
+e:\programingprojects\pongopengl\pongopengl\game.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   ScreenMenu.cpp
-e:\pongopengl\pongopengl\screenmenu.cpp(12): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\screenmenu.cpp(13): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\screenmenu.cpp(12): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\screenmenu.cpp(13): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   ScreenGame.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\screengame.cpp(33): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\screengame.cpp(46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\screengame.cpp(54): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\screengame.cpp(55): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\screengame.cpp(56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\screengame.cpp(59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\screengame.cpp(64): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\controler.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Screen.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
+e:\programingprojects\pongopengl\pongopengl\controler.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   PointsLayer.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\pointslayer.cpp(100): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\pointslayer.cpp(101): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\pointslayer.cpp(102): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\pointslayer.cpp(104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\pointslayer.cpp(105): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\pointslayer.cpp(109): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\pointslayer.cpp(114): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\pointslayer.cpp(137): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\pointslayer.cpp(140): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\pointslayer.cpp(144): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\game.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Physics.cpp
   Paddle.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\paddle.cpp(57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\paddle.cpp(59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\controler.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Main.cpp
+e:\programingprojects\pongopengl\pongopengl\main.cpp(1): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   ISubscriber.cpp
   Input.cpp
-e:\pongopengl\pongopengl\sprite.h(8): warning C4099: 'SDL_Texture': type name first seen using 'struct' now seen using 'class'
-  e:\pongopengl\sdl2\include\sdl_render.h(128): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\input.cpp(70): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\input.cpp(76): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\input.cpp(94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\input.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   GlobalStuff.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\globalstuff.cpp(37): warning C4101: 'ballIsOnRightSide': unreferenced local variable
+e:\programingprojects\pongopengl\pongopengl\controler.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   GameObject.cpp
-e:\pongopengl\pongopengl\gameobject.cpp(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\gameobject.cpp(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\gameobject.cpp(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\gameobject.cpp(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Game.cpp
-e:\pongopengl\pongopengl\sprite.h(8): warning C4099: 'SDL_Texture': type name first seen using 'struct' now seen using 'class'
-  e:\pongopengl\sdl2\include\sdl_render.h(128): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\game.cpp(27): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\game.cpp(28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\game.cpp(32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-e:\pongopengl\pongopengl\game.cpp(40): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-e:\pongopengl\pongopengl\game.cpp(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\game.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   FunctionCallTracker.cpp
   FPSTimer.cpp
-e:\pongopengl\pongopengl\fpstimer.cpp(16): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
-e:\pongopengl\pongopengl\fpstimer.cpp(19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\fpstimer.cpp(20): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
-e:\pongopengl\pongopengl\fpstimer.cpp(33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-e:\pongopengl\pongopengl\fpstimer.cpp(47): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
-e:\pongopengl\pongopengl\fpstimer.cpp(48): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\fpstimer.cpp(2): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Force.cpp
   Event.cpp
   Generating Code...
-e:\pongopengl\pongopengl\game.cpp(37): warning C4715: 'Game::CreateWindow': not all control paths return a value
   Compiling...
   EffectOnPickup.cpp
-e:\pongopengl\pongopengl\effectonpickup.cpp(19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\effectonpickup.cpp(19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Controler.cpp
-e:\pongopengl\pongopengl\sprite.h(8): warning C4099: 'SDL_Texture': type name first seen using 'struct' now seen using 'class'
-  e:\pongopengl\sdl2\include\sdl_render.h(128): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\controler.cpp(53): warning C4305: '/=': truncation from 'double' to 'float'
+e:\programingprojects\pongopengl\pongopengl\controler.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Collider.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\collider.cpp(102): warning C4305: 'initializing': truncation from 'double' to 'float'
-e:\pongopengl\pongopengl\collider.cpp(145): warning C4305: '/=': truncation from 'double' to 'float'
+e:\programingprojects\pongopengl\pongopengl\controler.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Button.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\button.cpp(8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-e:\pongopengl\pongopengl\button.cpp(21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\game.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Ball.cpp
-e:\pongopengl\sdl2\include\sdl_render.h(127): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\pongopengl\sprite.h(8): note: see declaration of 'SDL_Texture'
-e:\pongopengl\sdl2\include\sdl_render.h(128): warning C4099: 'SDL_Texture': type name first seen using 'class' now seen using 'struct'
-  e:\pongopengl\sdl2\include\sdl_render.h(127): note: see declaration of 'SDL_Texture'
-e:\pongopengl\pongopengl\ball.cpp(29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+e:\programingprojects\pongopengl\pongopengl\game.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Generating Code...
-  Pong(OpenGL).vcxproj -> E:\PongOpenGL\PongOpenGL\.\Output\Pong(OpenGL).exe

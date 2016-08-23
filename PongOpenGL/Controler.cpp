@@ -50,7 +50,7 @@ void Controler::UpdateOnInput(float deltaTime)
 	}
 	else
 	{			
-		ownerPaddle->horizontalSpeed /= 1.0008;
+		ownerPaddle->horizontalSpeed /= 1.00195;
 		ownerPaddle->currentAcc = 0;
 	}
 	LimitSpeedIfNescessary();

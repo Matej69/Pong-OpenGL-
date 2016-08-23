@@ -6,9 +6,9 @@
 
 namespace n_pointsLayer {
 
-	#define SMILE_SIZE 80
+	#define SMILE_SIZE 50
 	#define POINTER_SIZE 40
-	#define SPLITTER_SIZE 30	
+	#define SPLITTER_SIZE 15	
 
 	//explosion class
 	//creates object that can be drawn,moved by position, rotated (NonSpecificObject = GameObject - virtual)	
@@ -55,7 +55,6 @@ namespace n_pointsLayer {
 		bool explosionSpawned;
 		int numOfExplosions;
 	public:
-		vector<ObjPtr> smiles;
 		vector<ObjPtr> pointers;
 		vector<ObjPtr> splitters;
 		vector<Explosion*> explosions;

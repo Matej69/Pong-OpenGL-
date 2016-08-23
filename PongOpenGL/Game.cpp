@@ -103,7 +103,7 @@ void Game::GameLoop() {
 
 Game::Game()
 {
-	CreateWindow(800,600);
+	CreateWindow(1000,800);
 	GameLoop();
 }
 
